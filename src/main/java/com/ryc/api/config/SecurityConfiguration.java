@@ -56,6 +56,7 @@ public class SecurityConfiguration {
                                         .requestMatchers(HttpMethod.POST,"/api/v1/application/").permitAll()
                                         .requestMatchers(HttpMethod.GET,"/api/v1/application/form").permitAll()
                                         .requestMatchers(
+                                                "/actuator/**",
                                                 "/swagger-ui/*",
                                                 "/swagger-ui.html",
                                                 "/webjars/**",
