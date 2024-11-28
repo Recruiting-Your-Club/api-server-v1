@@ -25,23 +25,15 @@ public class PasserController {
     @HasPresidentRoleSecured
     @PostMapping("/final")
     public ResponseEntity<?> createFinalPasser(@Valid @RequestBody CreateFinalPasserRequest body) {
-        try {
-            List<CreateFinalPasserResponse> response = passerService.createFinalPasser(body);
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        }
+        List<CreateFinalPasserResponse> response = passerService.createFinalPasser(body);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @HasAnyRoleSecured
     @GetMapping("/final")
     public ResponseEntity<?> getAllFinalPasser(@RequestParam(required = true) String clubId,
                                                @RequestParam(required = true) String recruitmentId) {
-        try {
-            List<GetAllFinalPasserResponse> response = passerService.findAllFinalPasser(recruitmentId);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        }
+        List<GetAllFinalPasserResponse> response = passerService.findAllFinalPasser(recruitmentId);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

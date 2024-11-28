@@ -24,11 +24,7 @@ public class RecruitmentController {
     @HasPresidentRoleSecured
     @PostMapping("/")
     public ResponseEntity<?> createRecruitment(@Valid @RequestBody CreateRecruitmentRequest body) {
-        try {
-            CreateRecruitmentResponse response = recruitmentService.createRecruitment(body);
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        }
+        CreateRecruitmentResponse response = recruitmentService.createRecruitment(body);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }

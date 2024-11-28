@@ -29,12 +29,8 @@ public class InterviewController {
     @HasPresidentRoleSecured
     @PostMapping("/")
     public ResponseEntity<?> createInterview(@Valid @RequestBody CreateInterviewRequest body) {
-        try {
-            List<CreateInterviewResponse> response = interviewService.createInterview(body);
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        }
+        List<CreateInterviewResponse> response = interviewService.createInterview(body);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @HasAnyRoleSecured
@@ -42,34 +38,22 @@ public class InterviewController {
     public ResponseEntity<?> getAllApplicantsByInterview(@NotEmpty @RequestParam String clubId,
                                                          @RequestParam(required = false, defaultValue = "none") String interviewId,
                                                          @RequestParam(required = false, defaultValue = "none") String stepId) {
-        try {
-            GetAllApplicantByInterviewResponse response = interviewService.getAllApplicantsByInterview(interviewId, stepId);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        }
+        GetAllApplicantByInterviewResponse response = interviewService.getAllApplicantsByInterview(interviewId, stepId);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @HasPresidentRoleSecured
     @PostMapping("/assignment")
     public ResponseEntity<?> createInterviewAssignment(@Valid @RequestBody CreateInterviewAssignmentRequest body) {
-        try {
-            CreateInterviewAssignmentResponse response = interviewService.createInterviewAssignment(body);
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        }
+        CreateInterviewAssignmentResponse response = interviewService.createInterviewAssignment(body);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @HasAnyRoleSecured
     @GetMapping("/")
     public ResponseEntity<?> getInterviewScheduleList(@NotEmpty @RequestParam String clubId,
                                                       @NotEmpty @RequestParam String stepId) {
-        try {
-            List<GetInterviewScheduleResponse> response = interviewService.findInterviewSchedules(stepId);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e.getMessage());
-        }
+        List<GetInterviewScheduleResponse> response = interviewService.findInterviewSchedules(stepId);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
