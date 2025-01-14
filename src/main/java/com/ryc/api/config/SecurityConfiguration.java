@@ -5,6 +5,7 @@ import com.ryc.api.v1.security.exceptions.TokenAccessDeniedHandler;
 import com.ryc.api.v1.security.filter.EmailPasswordAuthenticationFilter;
 import com.ryc.api.v1.security.filter.JwtAuthenticationFilter;
 import com.ryc.api.v1.security.jwt.JwtTokenManager;
+import com.ryc.api.v1.security.service.RefreshTokenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +31,7 @@ public class SecurityConfiguration {
     private final AuthenticationConfiguration authenticationConfiguration;
     private final JwtTokenManager jwtTokenManager;
     private final TokenAccessDeniedHandler tokenAccessDeniedHandler;
+    private final RefreshTokenService refreshTokenService;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -38,7 +40,12 @@ public class SecurityConfiguration {
                 .formLogin(AbstractHttpConfigurer::disable) // 폼 로그인 비활성
                 .httpBasic(AbstractHttpConfigurer::disable) // 기본 인증 비활성
                 .addFilterBefore(jwtAuthenticationFilter, EmailPasswordAuthenticationFilter.class) //jwt 인증 필터
-                .addFilterAt(new EmailPasswordAuthenticationFilter(authenticationManager(authenticationConfiguration), jwtTokenManager), UsernamePasswordAuthenticationFilter.class) //email - password 로그인 필터
+                .addFilterAt(
+                        new EmailPasswordAuthenticationFilter(
+                                authenticationManager(authenticationConfiguration),
+                                jwtTokenManager,
+                                refreshTokenService),
+                        UsernamePasswordAuthenticationFilter.class) //email - password 로그인 필터
                 .exceptionHandling(
                         exceptions ->
                                 exceptions
@@ -53,6 +60,7 @@ public class SecurityConfiguration {
                                 request
                                         .requestMatchers("/").permitAll() // health check
                                         .requestMatchers("/api/v1/auth/*").permitAll()
+                                        .requestMatchers("/api/v1/auth/token/refresh").permitAll()
                                         .requestMatchers(HttpMethod.POST,"/api/v1/application/").permitAll()
                                         .requestMatchers(HttpMethod.GET,"/api/v1/application/form").permitAll()
                                         .requestMatchers(

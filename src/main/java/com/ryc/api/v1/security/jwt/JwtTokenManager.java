@@ -56,4 +56,24 @@ public class JwtTokenManager {
 
         return jwtVerifier.verify(token);
     }
+
+    public String generateRefreshToken(String email) {
+        return JWT.create()
+                .withSubject(email)
+                .withIssuer(jwtProperties.getAccessToken().getIssuer())
+                .withIssuedAt(new Date())
+                .withExpiresAt(
+                        new Date(System.currentTimeMillis() + jwtProperties.getAccessToken().getExpirationMinute() * 24 * 60 * 60 * 1000)) // 7일 이상
+                .sign(Algorithm.HMAC256(jwtProperties.getAccessToken().getSecretKey().getBytes()));
+    }
+
+    public boolean validateRefreshToken(String token) {
+        try {
+            DecodedJWT decodedJWT = getDecodedJWT(token);
+            return !isTokenExpired(token); // 만료되지 않은 경우 유효
+        } catch (Exception e) {
+            return false; // 검증 실패
+        }
+    }
+
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ryc.api.v1.security.dto.CustomUserDetail;
 import com.ryc.api.v1.security.jwt.JwtTokenManager;
+import com.ryc.api.v1.security.service.RefreshTokenService;
+import com.ryc.api.v1.user.domain.User;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,6 +27,7 @@ public class EmailPasswordAuthenticationFilter extends UsernamePasswordAuthentic
 
     private final AuthenticationManager authenticationManager;
     private final JwtTokenManager jwtTokenManager;
+    private final RefreshTokenService refreshTokenService;
 
     {
         setFilterProcessesUrl("/api/v1/auth/login");
@@ -73,8 +76,16 @@ public class EmailPasswordAuthenticationFilter extends UsernamePasswordAuthentic
 
         String role = auth.getAuthority();
 
-        String token = jwtTokenManager.generateToken(email, role);
-        response.addHeader("Authorization", "Bearer " + token);
+        String accessToken = jwtTokenManager.generateToken(email, role);
+        String refreshToken = jwtTokenManager.generateRefreshToken(email);
+
+        User user = customUserDetail.getUser();
+        refreshTokenService.updateRefreshToken(user, refreshToken, 7 * 24 * 60);
+
+        response.addHeader("Authorization", "Bearer " + accessToken);
+        response.addHeader("Refresh-Token", refreshToken);
+
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 
     @Override

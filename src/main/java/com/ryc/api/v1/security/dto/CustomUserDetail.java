@@ -16,6 +16,7 @@ import java.util.Collections;
 @ToString
 @RequiredArgsConstructor
 public class CustomUserDetail implements UserDetails, Serializable {
+    private final User user;
     private final String id;
     private final String username;
     private final String email;
@@ -25,6 +26,7 @@ public class CustomUserDetail implements UserDetails, Serializable {
     private static final String ROLE_PREFIX = "ROLE_";
 
     public CustomUserDetail(User user) {
+        this.user = user;
         this.id = user.getId();
         this.username = user.getUsername();
         this.email = user.getEmail();
