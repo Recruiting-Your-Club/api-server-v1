@@ -28,12 +28,8 @@ public class RoleController {
 
     @PostMapping("/application")
     public ResponseEntity<?> createClubRoleApplication(@Valid @RequestBody ClubRoleRequest body) {
-        try {
-            ClubRoleResponse response = roleService.createClubRoleApplication(body);
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        }
+        ClubRoleResponse response = roleService.createClubRoleApplication(body);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @HasPresidentRoleSecured
@@ -42,22 +38,14 @@ public class RoleController {
             @NotEmpty @RequestParam String clubId,
             @RequestParam(required = false, defaultValue = "ALL") ClubRole clubRole,
             @RequestParam(required = false, defaultValue = "ALL") RequestStatus status) {
-        try {
-            List<GetClubRoleApplicationResponse> response = roleService.findClubRoleApplications(clubId, clubRole, status);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e.getMessage());
-        }
+        List<GetClubRoleApplicationResponse> response = roleService.findClubRoleApplications(clubId, clubRole, status);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @HasPresidentRoleSecured
     @PostMapping("application/status")
     public ResponseEntity<?> updateClubRoleApplicationStatus(@Valid @RequestBody UpdateStatusRequest body) {
-        try {
-            UpdateStatusResponse response = roleService.updateClubRoleApplicationStatus(body);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
+        UpdateStatusResponse response = roleService.updateClubRoleApplicationStatus(body);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
