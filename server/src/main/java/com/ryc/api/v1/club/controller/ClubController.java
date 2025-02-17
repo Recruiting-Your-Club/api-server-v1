@@ -23,31 +23,19 @@ public class ClubController {
 
     @PostMapping("/")
     public ResponseEntity<?> createClub(@Valid @RequestBody CreateClubRequest body) {
-        try {
-            CreateClubResponse responseDto = clubService.createClub(body);
-            return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
-        }
+        CreateClubResponse responseDto = clubService.createClub(body);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 
     @GetMapping("/all")
     public ResponseEntity<?> getAllClubsOverview() {
-        try {
-            List<ClubOverviewResponse> response = clubService.findAllClubsOverview();
-            return ResponseEntity.status(HttpStatus.OK).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e.getMessage());
-        }
+        List<ClubOverviewResponse> response = clubService.findAllClubsOverview();
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @GetMapping("/")
     public ResponseEntity<?> getClub(@RequestParam(required = true) String clubId) {
-        try {
-            ClubResponse response = clubService.findClubById(clubId);
-            return ResponseEntity.status(HttpStatus.OK).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(e.getMessage());
-        }
+        ClubResponse response = clubService.findClubById(clubId);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
