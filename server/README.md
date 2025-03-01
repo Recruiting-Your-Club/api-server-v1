@@ -39,4 +39,6 @@
 [FIGMA](https://www.figma.com/design/bRET7spZWHW3tV6oKcD3fg/Recruiting-Your-Club!-%EB%94%94%EC%9E%90%EC%9D%B8-%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85?node-id=0-1&t=XmewJnwbVNENIfix-1)
 
 ### ERD
-[ERD 설계](https://www.erdcloud.com/p/7jod2Hsx3XAPRi48F)
+[ERD 1차 설계](https://www.erdcloud.com/p/7jod2Hsx3XAPRi48F)
+
+[ERD 2차 설계](https://www.erdcloud.com/p/y6aAXa5JNJx3Ny6qs)
