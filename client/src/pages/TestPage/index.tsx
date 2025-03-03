@@ -1,65 +1,14 @@
 import React from 'react';
-import { css } from '@emotion/react';
-
+import { Text } from '@components/Text';
 function TestPage() {
     return (
         <>
-            <div
-                css={css`
-                    font-size: 3.2rem;
-                    font-weight: bold;
-                `}
-            >
-                Hello
-            </div>
-            <div
-                css={css`
-                    font-size: 2.8rem;
-                    font-weight: bold;
-                `}
-            >
-                Hello
-            </div>
-            <div
-                css={css`
-                    font-size: 2.4rem;
-                    font-weight: bold;
-                `}
-            >
-                Hello
-            </div>
-            <div
-                css={css`
-                    font-size: 2rem;
-                    font-weight: bold;
-                `}
-            >
-                Hello
-            </div>
-            <div
-                css={css`
-                    font-size: 1.6rem;
-                    font-weight: bold;
-                `}
-            >
-                Hello
-            </div>
-            <div
-                css={css`
-                    font-size: 1.4rem;
-                    font-weight: bold;
-                `}
-            >
-                Hello
-            </div>
-            <div
-                css={css`
-                    font-size: 1.2rem;
-                    font-weight: bold;
-                `}
-            >
-                Hello
-            </div>
+            <Text type="h1Bold" color="primary">
+                Test Page
+            </Text>
+            <Text as="h1" type="bodyRegular" color="black">
+                Test Page
+            </Text>
         </>
     );
 }

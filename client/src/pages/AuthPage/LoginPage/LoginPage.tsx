@@ -1,10 +1,16 @@
 import React from 'react';
-import { LoginContainer, LoginBox, inputContainer, buttonContainer, titleContainer } from './LoginPage.style';
+import {
+    LoginContainer,
+    LoginBox,
+    inputContainer,
+    buttonContainer,
+    titleContainer,
+} from './LoginPage.style';
 import { Button, BaseInput, PasswordInput } from '@components';
 import { Link } from 'react-router-dom';
 import { css } from '@emotion/react';
-import { colors } from '@styles/theme/color';
-import useRouter from '@hooks/useRouter';
+import theme from '@styles/theme';
+import { useRouter } from '@hooks/useRouter';
 
 function LoginPage() {
     const { removeHistoryAndGo } = useRouter();
@@ -29,7 +35,7 @@ function LoginPage() {
                         size="full"
                         customCss={css`
                             :hover {
-                                color: ${colors.defaultHover};
+                                color: ${theme.colors.defaultHover};
                             }
                         `}
                     >

@@ -1,82 +1,145 @@
+import type { CSSProperties } from 'react';
+
+type FontWeightKey = 'bold' | 'semibold' | 'regular' | 'light';
+const FontWeight: Record<FontWeightKey, CSSProperties['fontWeight']> = {
+    bold: 700,
+    semibold: 500,
+    regular: 400,
+    light: 300,
+};
+
 const TYPOGRAPHY = {
+    //display
     displayBold: {
-        fontSize: '8.4rem', // 48px
+        fontSize: '8.4rem',
+        fontWeight: FontWeight['bold'],
         lineHeight: '1.5',
     },
+    //h1
     h1Bold: {
-        fontSize: '3.2rem', // 32px
+        fontSize: '3.2rem',
+        fontWeight: FontWeight['bold'],
         lineHeight: '1.5',
     },
-    h1Medium: {
-        fontSize: '3.2rem', // 32px
+    h1Semibold: {
+        fontSize: '3.2rem',
+        fontWeight: FontWeight['semibold'],
         lineHeight: '1.5',
     },
+    h1Light: {
+        fontSize: '3.2rem',
+        fontWeight: FontWeight['light'],
+        lineHeight: '1.5',
+    },
+    //h2
     h2Bold: {
-        fontSize: '2.8rem', // 32px
+        fontSize: '2.8rem',
+        fontWeight: FontWeight['bold'],
         lineHeight: '1.5',
     },
-    h2Medium: {
-        fontSize: '2.8rem', // 32px
+    h2Semibold: {
+        fontSize: '2.8rem',
+        fontWeight: FontWeight['semibold'],
         lineHeight: '1.5',
     },
+    h2Light: {
+        fontSize: '2.8rem',
+        fontWeight: FontWeight['light'],
+        lineHeight: '1.5',
+    },
+    //h3
     h3Bold: {
-        fontSize: '2.4rem', // 28px
+        fontSize: '2.4rem',
+        fontWeight: FontWeight['bold'],
         lineHeight: '1.5',
     },
-    h3Medium: {
-        fontSize: '2.4rem', // 28px
+    h3Semibold: {
+        fontSize: '2.4rem',
+        fontWeight: FontWeight['semibold'],
         lineHeight: '1.5',
     },
     h3Light: {
-        fontSize: '2.4rem', // 28px
+        fontSize: '2.4rem',
+        fontWeight: FontWeight['light'],
         lineHeight: '1.5',
     },
+    //h4
     h4Bold: {
-        fontSize: '2rem', // 24px
+        fontSize: '2rem',
+        fontWeight: FontWeight['bold'],
         lineHeight: '1.5',
     },
-    h4Medium: {
-        fontSize: '2rem', // 24px
+    h4Semibold: {
+        fontSize: '2rem',
+        fontWeight: FontWeight['semibold'],
         lineHeight: '1.5',
     },
     h4Light: {
-        fontSize: '2rem', // 24px
+        fontSize: '2rem',
+        fontWeight: FontWeight['light'],
         lineHeight: '1.5',
     },
+    //body
     bodyBold: {
-        fontSize: '1.6rem', // 16px
+        fontSize: '1.6rem',
+        fontWeight: FontWeight['bold'],
         lineHeight: '1.5',
     },
-    bodyMedium: {
-        fontSize: '1.6rem', // 16px
+    bodySemibold: {
+        fontSize: '1.6rem',
+        fontWeight: FontWeight['semibold'],
+        lineHeight: '1.5',
+    },
+    bodyRegular: {
+        fontSize: '1.6rem',
+        fontWeight: FontWeight['regular'],
         lineHeight: '1.5',
     },
     bodyLight: {
-        fontSize: '1.6rem', // 16px
+        fontSize: '1.6rem',
+        fontWeight: FontWeight['light'],
         lineHeight: '1.5',
     },
+    //caption
     captionBold: {
         fontSize: '1.4rem',
+        fontWeight: FontWeight['bold'],
         lineHeight: '1.3',
     },
-    captionMedium: {
+    captionSemibold: {
         fontSize: '1.4rem',
+        fontWeight: FontWeight['semibold'],
+        lineHeight: '1.3',
+    },
+    captionRegular: {
+        fontSize: '1.4rem',
+        fontWeight: FontWeight['regular'],
         lineHeight: '1.3',
     },
     captionLight: {
         fontSize: '1.4rem',
+        fontWeight: FontWeight['light'],
         lineHeight: '1.3',
     },
+    //subCaption
     subCaptionBold: {
         fontSize: '1.2rem',
-        lineHeight: '1.3',
+        fontWeight: FontWeight['bold'],
+        lineHeight: '1.2',
     },
-    subCaptionMedium: {
+    subCaptionSemibold: {
         fontSize: '1.2rem',
+        fontWeight: FontWeight['semibold'],
+        lineHeight: '1.2',
+    },
+    subCaptionRegular: {
+        fontSize: '1.2rem',
+        fontWeight: FontWeight['regular'],
         lineHeight: '1.2',
     },
     subCaptionLight: {
         fontSize: '1.2rem',
+        fontWeight: FontWeight['light'],
         lineHeight: '1.2',
     },
 } as const;

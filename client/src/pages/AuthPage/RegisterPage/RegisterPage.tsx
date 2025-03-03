@@ -9,8 +9,8 @@ import {
 } from './RegisterPage.style';
 import { BaseInput, PasswordInput, Button } from '@components';
 import { css } from '@emotion/react';
-import { colors } from '@styles/theme/color';
-import useRouter from '@hooks/useRouter';
+import theme from '@styles/theme';
+import { useRouter } from '@hooks/useRouter';
 
 function RegisterPage() {
     const { removeHistoryAndGo } = useRouter();
@@ -57,7 +57,7 @@ function RegisterPage() {
                         size="full"
                         customCss={css`
                             :hover {
-                                color: ${colors.defaultHover};
+                                color: ${theme.colors.defaultHover};
                             }
                         `}
                     >

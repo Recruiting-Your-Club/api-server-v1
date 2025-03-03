@@ -61,12 +61,17 @@ export const Interactive = () => {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+        <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}
+        >
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                 <Rating value={rating} onChange={handleClick} type={type} />
                 <span>{`(${rating})`}</span>
             </div>
-            <button onClick={resetToClickMode} style={{ padding: '0.5rem 1rem', cursor: 'pointer' }}>
+            <button
+                onClick={resetToClickMode}
+                style={{ padding: '0.5rem 1rem', cursor: 'pointer' }}
+            >
                 편집
             </button>
         </div>

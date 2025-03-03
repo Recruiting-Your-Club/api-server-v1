@@ -24,14 +24,14 @@ export const Primary: Story = {
     },
 };
 
-export const lined: Story = {
+export const progress: Story = {
     args: {
         variant: 'progress',
         text: '모집중',
     },
 };
 
-export const errorInput: Story = {
+export const end: Story = {
     args: {
         variant: 'end',
         text: '모집마감',

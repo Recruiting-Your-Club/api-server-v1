@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { colors } from '@styles/color';
+import theme from '@styles/theme';
 import type { ToggleVariant } from './Toggle';
 
 export const hiddenCheckbox = css`
@@ -23,10 +23,11 @@ export const toggleContainer = (variant: ToggleVariant, width: string, isChecked
         case 'primary':
             return css`
                 ${toggleBase}
+
                 padding: 0.2rem 0.1rem;
                 ${isChecked
-                    ? `background-color: ${colors.disabled};`
-                    : `background-color: ${colors.default};`}
+                    ? `background-color: ${theme.colors.disabled};`
+                    : `background-color: ${theme.colors.default};`}
                 border-radius: 1.1rem;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
                 width: ${width};
@@ -44,7 +45,7 @@ export const toggleContainer = (variant: ToggleVariant, width: string, isChecked
             return css`
                 ${toggleBase}
                 padding: 0.2rem;
-                background-color: ${colors.default};
+                background-color: ${theme.colors.default};
                 border-radius: 1.2rem;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
                 width: ${width};
@@ -54,8 +55,8 @@ export const toggleContainer = (variant: ToggleVariant, width: string, isChecked
                 ${toggleBase}
                 padding: 0.2rem 0.1rem;
                 ${isChecked
-                    ? `background-color: ${colors.disabled};`
-                    : `background-color: ${colors.default};`}
+                    ? `background-color: ${theme.colors.disabled};`
+                    : `background-color: ${theme.colors.default};`}
                 border-radius: 1.1rem;
                 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
                 width: ${width};
@@ -84,14 +85,14 @@ export const leftTextContainer = (variant: ToggleVariant, isChecked: boolean) =>
         case 'primary':
             return css`
                 ${noneTextBase}
-                ${isChecked ? `background-color: ${colors.white};` : `color: #64748b;`}
+                ${isChecked ? `background-color: ${theme.colors.white};` : `color: #64748b;`}
             `;
         case 'text':
             return css`
                 border-radius: 0.25rem;
                 ${textBase}
                 ${isChecked
-                    ? ` color: ${colors.default};   background-color: #f4f7ff; `
+                    ? ` color: ${theme.colors.default};   background-color: #f4f7ff; `
                     : ` color: #64748b;`}
             `;
         case 'secondText':
@@ -99,13 +100,13 @@ export const leftTextContainer = (variant: ToggleVariant, isChecked: boolean) =>
                 border-radius: 1rem;
                 ${textBase}
                 ${isChecked
-                    ? `color: ${colors.default}; background-color: ${colors.white};`
-                    : `color: ${colors.white};`}
+                    ? `color: ${theme.colors.default}; background-color: ${theme.colors.white};`
+                    : `color: ${theme.colors.white};`}
             `;
         default:
             return css`
                 ${noneTextBase}
-                ${isChecked ? `background-color: ${colors.white};` : `color: #64748b;`}
+                ${isChecked ? `background-color: ${theme.colors.white};` : `color: #64748b;`}
             `;
     }
 };
@@ -115,14 +116,14 @@ export const rightTextContainer = (variant: ToggleVariant, isChecked: boolean) =
         case 'primary':
             return css`
                 ${noneTextBase}
-                ${!isChecked ? `background-color: ${colors.white};` : `color: #64748b;`}
+                ${!isChecked ? `background-color: ${theme.colors.white};` : `color: #64748b;`}
             `;
         case 'text':
             return css`
                 border-radius: 0.25rem;
                 ${textBase}
                 ${!isChecked
-                    ? `color: ${colors.default};background-color: #f4f7ff;`
+                    ? `color: ${theme.colors.default};background-color: #f4f7ff;`
                     : `color: #64748b;`}
             `;
         case 'secondText':
@@ -130,13 +131,13 @@ export const rightTextContainer = (variant: ToggleVariant, isChecked: boolean) =
                 border-radius: 1rem;
                 ${textBase}
                 ${!isChecked
-                    ? `color: ${colors.default};background-color: ${colors.white};`
-                    : `color: ${colors.white};`}
+                    ? `color: ${theme.colors.default};background-color: ${theme.colors.white};`
+                    : `color: ${theme.colors.white};`}
             `;
         default:
             return css`
                 ${noneTextBase}
-                ${!isChecked ? `background-color: ${colors.white};` : `color: #64748b;`}
+                ${!isChecked ? `background-color: ${theme.colors.white};` : `color: #64748b;`}
             `;
     }
 };

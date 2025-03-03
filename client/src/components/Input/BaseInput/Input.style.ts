@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { colors } from '@styles/theme/color';
+import theme from '@styles/theme';
 
 export type InputVariant = 'primary' | 'lined';
 
@@ -27,20 +27,20 @@ const baseInputContainer = css`
 export const inputContainer = (error: boolean) => ({
     primary: css`
         ${baseInputContainer};
-        border: 1px solid ${error ? colors.red[1000] : colors.inputBorder};
+        border: 1px solid ${error ? theme.colors.red[1000] : theme.colors.inputBorder};
         border-radius: 0.6rem;
         transition: border-color 0.3s ease-in-out;
         &:focus-within {
-            border-color: ${colors.default};
+            border-color: ${theme.colors.default};
         }
     `,
     lined: css`
         ${baseInputContainer};
         border: none;
-        border-bottom: 1px solid ${error ? colors.red[1000] : colors.inputBorder};
+        border-bottom: 1px solid ${error ? theme.colors.red[1000] : theme.colors.inputBorder};
         transition: border-bottom 0.3s ease-in-out;
         &:focus-within {
-            border-color: ${colors.default};
+            border-color: ${theme.colors.default};
         }
     `,
 });
@@ -67,5 +67,5 @@ export const helperTextStyle = (error: boolean | undefined) => css`
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
     padding-left: 0.2rem;
-    color: ${error ? colors.red[1000] : colors.textHelper};
+    color: ${error ? theme.colors.red[1000] : theme.colors.textHelper};
 `;
