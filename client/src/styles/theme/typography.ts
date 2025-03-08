@@ -142,6 +142,27 @@ const TYPOGRAPHY = {
         fontWeight: FontWeight['light'],
         lineHeight: '1.2',
     },
+    //helperText
+    helperTextBold: {
+        fontSize: '1rem',
+        fontWeight: FontWeight['bold'],
+        lineHeight: '1',
+    },
+    helperTextSemibold: {
+        fontSize: '1rem',
+        fontWeight: FontWeight['semibold'],
+        lineHeight: '1',
+    },
+    helperTextRegular: {
+        fontSize: '1rem',
+        fontWeight: FontWeight['regular'],
+        lineHeight: '1',
+    },
+    helperTextLight: {
+        fontSize: '1rem',
+        fontWeight: FontWeight['light'],
+        lineHeight: '1',
+    },
 } as const;
 
 export { TYPOGRAPHY };
