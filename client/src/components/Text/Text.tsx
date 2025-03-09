@@ -2,16 +2,18 @@ import React from 'react';
 import type { TYPOGRAPHY } from '@styles/theme/typography';
 import type { CSSProperties, PropsWithChildren, ElementType } from 'react';
 import { textStyle } from './Text.style';
+import type { CSSObject } from '@emotion/react';
 
 export type TextType = keyof typeof TYPOGRAPHY;
 export type TextColor = 'black' | 'primary' | 'warning' | 'caption';
 
 interface TextProps extends PropsWithChildren {
-    type: TextType;
+    type?: TextType;
     color?: TextColor;
     textAlign?: CSSProperties['textAlign'];
     noWrap?: boolean;
     cropped?: boolean;
+    sx?: CSSObject;
     as?: ElementType;
 }
 function Text({
@@ -21,8 +23,9 @@ function Text({
     noWrap = false,
     cropped = false,
     children,
+    sx,
     as: Tag = 'p',
 }: TextProps) {
-    return <Tag css={textStyle({ type, color, textAlign, noWrap, cropped })}>{children}</Tag>;
+    return <Tag css={[textStyle({ type, color, textAlign, noWrap, cropped }), sx]}>{children}</Tag>;
 }
 export { Text };
