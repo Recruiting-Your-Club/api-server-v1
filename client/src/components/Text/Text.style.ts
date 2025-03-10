@@ -1,8 +1,8 @@
+import type { SerializedStyles } from '@emotion/react';
 import { css } from '@emotion/react';
 import theme from '@styles/theme';
-import type { TextType, TextColor } from './Text';
-import type { SerializedStyles } from '@emotion/react';
 import type { CSSProperties } from 'react';
+import type { TextColor, TextType } from './Text';
 
 const TEXT_COLORS = {
     black: theme.colors.black,
@@ -10,6 +10,8 @@ const TEXT_COLORS = {
     primary: theme.colors.default,
     warning: theme.colors.red[800],
     caption: theme.colors.gray[600],
+    subCaption: theme.colors.gray[500],
+    helper: theme.colors.gray[400],
 };
 
 const TEXT: Record<TextType, SerializedStyles> = {
@@ -45,6 +47,11 @@ const TEXT: Record<TextType, SerializedStyles> = {
     subCaptionSemibold: css(theme.typography.subCaptionSemibold),
     subCaptionRegular: css(theme.typography.subCaptionRegular),
     subCaptionLight: css(theme.typography.subCaptionLight),
+    // helperText
+    helperTextBold: css(theme.typography.helperTextBold),
+    helperTextSemibold: css(theme.typography.helperTextSemibold),
+    helperTextRegular: css(theme.typography.helperTextRegular),
+    helperTextLight: css(theme.typography.helperTextLight),
 };
 
 export const textStyle = ({
@@ -64,7 +71,7 @@ export const textStyle = ({
         ${TEXT[type]}
         color: ${TEXT_COLORS[color]};
         text-align: ${textAlign};
-        white-space: ${noWrap ? 'nowrap' : 'normal'};
+        white-space: ${noWrap ? 'nowrap' : 'pre-wrap'};
         overflow: ${cropped ? 'hidden' : ''};
         text-overflow: ${cropped ? 'ellipsis' : ''};
     `;

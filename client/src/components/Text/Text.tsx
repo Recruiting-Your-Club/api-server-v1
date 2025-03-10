@@ -1,10 +1,10 @@
-import React from 'react';
 import type { TYPOGRAPHY } from '@styles/theme/typography';
-import type { CSSProperties, PropsWithChildren, ElementType } from 'react';
+import type { CSSProperties, ElementType, PropsWithChildren } from 'react';
+import React from 'react';
 import { textStyle } from './Text.style';
 
 export type TextType = keyof typeof TYPOGRAPHY;
-export type TextColor = 'black' | 'primary' | 'warning' | 'caption';
+export type TextColor = 'black' | 'primary' | 'warning' | 'caption' | 'subCaption' | 'helper';
 
 interface TextProps extends PropsWithChildren {
     type: TextType;
