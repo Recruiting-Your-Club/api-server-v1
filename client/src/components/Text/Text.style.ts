@@ -64,7 +64,7 @@ export const textStyle = ({
         ${TEXT[type]}
         color: ${TEXT_COLORS[color]};
         text-align: ${textAlign};
-        white-space: ${noWrap ? 'nowrap' : 'normal'};
+        white-space: ${noWrap ? 'nowrap' : 'pre-wrap'};
         overflow: ${cropped ? 'hidden' : ''};
         text-overflow: ${cropped ? 'ellipsis' : ''};
     `;

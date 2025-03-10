@@ -1,6 +1,6 @@
 import React from 'react';
 import { s_size, s_base, s_variant } from './Button.style';
-import type { SerializedStyles } from '@emotion/react';
+import type { CSSObject, SerializedStyles } from '@emotion/react';
 import type { ButtonHTMLAttributes } from 'react';
 
 export type ButtonSize = 'xs' | 's' | 'md' | 'lg' | 'xl' | 'full';
@@ -11,7 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
     size: ButtonSize;
     loading?: boolean;
-    customCss?: SerializedStyles;
+    sx?: CSSObject;
     type?: 'button' | 'submit' | 'reset';
     radius?: string;
     zIndex?: number;
@@ -24,7 +24,7 @@ function Button({
     radius = '0.6rem',
     zIndex = 0,
     loading = false,
-    customCss,
+    sx,
     type = 'button',
     'aria-label': ariaLabel,
     onClick,
@@ -39,7 +39,7 @@ function Button({
             onClick={onClick}
             type={type}
             aria-label={ariaLabel}
-            css={[cssProp, customCss]}
+            css={[cssProp, sx]}
         >
             {loading && '...'}
             {!loading && children}

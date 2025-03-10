@@ -40,7 +40,7 @@ export const buttonSize: Record<ButtonSize, Size> = {
     },
     xl: {
         height: '3.6rem',
-        padding: '1rem',
+        padding: '1rem 2rem',
         typography: theme.typography.bodyRegular,
     },
     full: {
@@ -74,12 +74,12 @@ export const s_variant = (variant: ButtonVariant) => {
         case 'outlined':
             return css`
                 background-color: ${theme.colors.white};
-                color: ${theme.colors.default};
-                border: 0.1rem solid ${theme.colors.default};
+                color: ${theme.colors.black};
+                border: 0.1rem solid ${theme.colors.gray[500]};
                 transition: background-color 0.2s;
                 &:hover {
-                    background-color: ${theme.colors.defaultHover};
-                    color: ${theme.colors.white};
+                    color: ${theme.colors.default};
+                    border: 0.1rem solid ${theme.colors.default};
                 }
             `;
         case 'transparent':
@@ -87,6 +87,10 @@ export const s_variant = (variant: ButtonVariant) => {
                 background-color: transparent;
                 border: none;
                 color: ${theme.colors.textHelper};
+                transition: background-color 0.2s;
+                &:hover {
+                    background-color: ${theme.colors.gray[200]};
+                }
             `;
         default:
             return css`
